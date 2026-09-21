@@ -11,7 +11,7 @@ Portafolio personal de un estudiante de **Ingeniería de Sistemas** interesado e
 |---|---|
 | **Nombre** | Miguel Alejandro Champutiz Rodriguez |
 | **Estudios** | Ingeniería de Sistemas, Uniremington (6.º semestre) |
-| **Área de interés** | Ciberseguridad |
+| **Área de interés** | Ingenieria de Software|
 | **Enfoque** | Aprender construyendo cosas que funcionan y que otras personas puedan usar y ayudarlas en su vida  |
 
 ---
