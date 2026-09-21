@@ -21,7 +21,6 @@ Portafolio personal de un estudiante de **Ingeniería de Sistemas** interesado e
 | Tecnología | Nivel |
 |---|---|
 | HTML | Aprendiendo |
-| CSS | Aprendiendo |
 | Python | Aprendiendo |
 | MySQL | Aprendiendo |
 | JavaScript | Aprendiendo |
