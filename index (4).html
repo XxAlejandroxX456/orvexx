@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portafolio | Miguel Alejandro Champutiz Rodriguez</title>
+<meta name="description" content="Portafolio de Miguel Alejandro Champutiz Rodriguez, estudiante de Ingeniería de Sistemas interesado en Ingeniería en Software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --papel: #f5f8fc;
+    --cuadricula: #dde5f0;
+    --tinta: #182038;
+    --gris: #58627c;
+    --azul: #820bea;
+    --azul-suave: #e3eaff;
+    --resaltador: #900fd5;
+    --blanco: #ffffff;
+    --titulos: "Sora", "Trebuchet MS", Arial, sans-serif;
+    --texto: "Manrope", "Segoe UI", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    font-family: var(--texto);
+    color: var(--tinta);
+    line-height: 1.65;
+    font-size: 1.05rem;
+    background-color: var(--papel);
+    /* Fondo de hoja cuadriculada */
+    background-image:
+      linear-gradient(var(--cuadricula) 1px, transparent 1px),
+      linear-gradient(90deg, var(--cuadricula) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; }
+
+  .contenedor { width: min(1040px, 100% - 2.5rem); margin-inline: auto; }
+
+  /* Encabezado */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--blanco);
+    border-bottom: 2px solid var(--tinta);
+  }
+  .barra { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding: .7rem 0; }
+  .logo { font-family: var(--titulos); font-weight: 800; text-decoration: none; font-size: 1.1rem; }
+  nav ul { list-style: none; display: flex; gap: .25rem; flex-wrap: wrap; }
+  nav a { display: block; padding: .35rem .8rem; text-decoration: none; font-weight: 600; border-radius: 6px; color: var(--gris); }
+  nav a:hover { background: var(--resaltador); color: var(--tinta); }
+
+  /* Secciones */
+  section { padding: clamp(3rem, 7vw, 5rem) 0; }
+  .bloque { background: var(--blanco); border-block: 2px solid var(--tinta); }
+  h2 {
+    font-family: var(--titulos); font-weight: 800;
+    font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.1;
+    margin-bottom: 2rem; letter-spacing: -0.01em;
+    display: inline-block;
+    background: linear-gradient(transparent 62%, var(--resaltador) 62%);
+    padding-right: .3rem;
+  }
+
+  /* Inicio */
+  .inicio { padding-top: clamp(3rem, 8vw, 6rem); }
+  .inicio .contenedor { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: center; }
+  .saludo { font-weight: 600; color: var(--azul); margin-bottom: .5rem; }
+  .inicio h1 {
+    font-family: var(--titulos); font-weight: 800; letter-spacing: -0.02em;
+    font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.05; margin-bottom: 1rem;
+  }
+  .inicio .descripcion { max-width: 34rem; color: var(--gris); font-size: 1.15rem; margin-bottom: 1.2rem; }
+  .interes {
+    display: inline-block; padding: .4rem .9rem; margin-bottom: 1.6rem;
+    background: var(--azul-suave); border: 2px solid var(--tinta); border-radius: 8px; font-weight: 600;
+  }
+  .botones a {
+    display: inline-block; padding: .75rem 1.4rem; margin: 0 .5rem .5rem 0;
+    font-weight: 700; text-decoration: none; border: 2px solid var(--tinta); border-radius: 8px;
+    background: var(--tinta); color: var(--blanco); box-shadow: 4px 4px 0 var(--azul);
+  }
+  .botones a.claro { background: var(--blanco); color: var(--tinta); }
+  .botones a:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--azul); }
+
+  /* Foto */
+  .foto {
+    position: relative;
+    width: min(320px, 100%);
+    aspect-ratio: 1;
+    justify-self: center;
+    border: 2px solid var(--tinta);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--azul-suave);
+    box-shadow: 10px 10px 0 var(--tinta);
+  }
+  .foto svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  /* Sobre mí */
+  .sobre-mi { max-width: 780px; }
+  .sobre-mi .fila { display: grid; grid-template-columns: 230px 1fr; gap: 1rem; padding: 1.2rem 0; border-top: 1px solid var(--cuadricula); }
+  .sobre-mi .fila:first-child { border-top: none; padding-top: 0; }
+  .sobre-mi h3 { font-family: var(--titulos); font-size: 1.05rem; }
+  .sobre-mi p { color: var(--gris); }
+
+  /* Tecnologías */
+  .tecnologias { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+  .tecnologias li {
+    background: var(--blanco); border: 2px solid var(--tinta); border-radius: 10px;
+    padding: .9rem 1rem; display: flex; flex-direction: column; gap: .15rem;
+  }
+  .tecnologias strong { font-family: var(--titulos); font-size: 1.05rem; }
+  .tecnologias span { font-size: .85rem; font-weight: 600; color: var(--gris); }
+  .tecnologias li.conozco { box-shadow: 4px 4px 0 var(--azul); }
+  .tecnologias li.aprendiendo { border-style: dashed; }
+  .leyenda { margin-top: 1.4rem; color: var(--gris); font-size: .95rem; }
+
+  /* Proyectos */
+  .proyecto {
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem; align-items: center;
+    padding: 2rem 0; border-top: 1px solid var(--cuadricula);
+  }
+  .proyecto:first-of-type { border-top: none; padding-top: 0; }
+  .captura {
+    aspect-ratio: 16 / 10; border: 2px solid var(--tinta); border-radius: 12px; overflow: hidden;
+    background: var(--azul-suave); display: grid; place-items: center; position: relative;
+    box-shadow: 6px 6px 0 var(--tinta);
+  }
+  .captura span { color: var(--gris); font-weight: 600; font-size: .95rem; padding: 1rem; text-align: center; }
+  .captura img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--blanco); }
+  .proyecto h3 { font-family: var(--titulos); font-size: 1.5rem; margin-bottom: .5rem; }
+  .proyecto p { color: var(--gris); margin-bottom: .9rem; }
+  .etiquetas { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.1rem; }
+  .etiquetas li { padding: .15rem .65rem; border: 2px solid var(--tinta); border-radius: 999px; font-size: .85rem; font-weight: 600; background: var(--blanco); }
+  .enlace { font-weight: 700; color: var(--azul); text-underline-offset: 4px; }
+  .sin-enlace { font-weight: 600; color: var(--gris); }
+
+  footer { background: var(--tinta); color: #c9d1e8; padding: 1.5rem 0; font-size: .95rem; }
+  footer .contenedor { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  footer a { color: var(--resaltador); }
+
+  @media (max-width: 800px) {
+    .inicio .contenedor, .proyecto { grid-template-columns: 1fr; }
+    .sobre-mi .fila { grid-template-columns: 1fr; gap: .2rem; }
+    .barra { justify-content: center; }
+    .foto { order: -1; width: min(240px, 100%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .botones a:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="contenedor barra">
+    <a class="logo" href="#inicio">Mi portafolio</a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#tecnologias">Tecnologías</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ INICIO ============ -->
+  <section class="inicio" id="inicio">
+    <div class="contenedor">
+      <div>
+        <p class="saludo">Hola, mucho gusto</p>
+        <h1>Miguel Alejandro Champutiz Rodriguez</h1>
+        <p class="descripcion">Soy estudiante de Ingeniería de Sistemas. Me gusta aprender cosas nuevas y aprender a desarrollar aplicaciones y paginas donde las personas puedan usasrlas y dar su opinion sobre mis proyectos.</p>
+        <p class="interes">Área de interés: Ingeniería en Software</p>
+        <div class="botones">
+          <a href="#proyectos">Ver proyectos</a>
+          <a class="claro" href="#sobre-mi">Conocerme</a>
+        </div>
+      </div>
+
+      <div class="foto">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="38" r="17" fill="#9fb3ee"/>
+          <path d="M14 100c0-23 16-36 36-36s36 13 36 36z" fill="#9fb3ee"/>
+        </svg>
+        <img src="./foto.jpg.jpeg" alt="Mi foto" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE MÍ ============ -->
+  <section class="bloque" id="sobre-mi">
+    <div class="contenedor">
+      <h2>Sobre mí</h2>
+      <div class="sobre-mi">
+        <div class="fila">
+          <h3>Formación académica</h3>
+          <p>Estudiante de Ingeniería de Sistemas en la Universidad Uniremington. Curso actualmente el sexto semestre.</p>
+        </div>
+        <div class="fila">
+          <h3>Habilidades</h3>
+          <p>Trabajo en equipo, resolución de problemas, comunicación clara y ganas de aprender cosas nuevas.</p>
+        </div>
+        <div class="fila">
+          <h3>Intereses profesionales</h3>
+          <p>Me interesa aprender más sobre Ingeniería de Software, trabajar con bases de datos y mejorar mi forma de programar con buenas prácticas.</p>
+        </div>
+        <div class="fila">
+          <h3>Tecnologías que conozco o estoy aprendiendo</h3>
+          <p>Trabajo con HTML, CSS, Python y MySQL en mis proyectos, y uso Git y GitHub para guardar mi código. Puedes ver el detalle en la siguiente sección.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TECNOLOGÍAS ============ -->
+  <section id="tecnologias">
+    <div class="contenedor">
+      <h2>Tecnologías</h2>
+      <!-- Cambia la clase y el texto juntos: class="conozco" + "Conozco"  |  class="aprendiendo" + "Aprendiendo" -->
+      <ul class="tecnologias">
+        <li class="conozco"><strong>HTML</strong><span>Aprendiendo</span></li>
+        <li class="conozco"><strong>CSS</strong><span>Aprendiendo</span></li>
+        <li class="conozco"><strong>Python</strong><span>Aprendiendo</span></li>
+        <li class="conozco"><strong>MySQL</strong><span>Aprendiendo</span></li>
+        <li class="aprendiendo"><strong>JavaScript</strong><span>Aprendiendo</span></li>
+        <li class="aprendiendo"><strong>Java</strong><span>Aprendiendo</span></li>
+        <li class="aprendiendo"><strong>Git</strong><span>Aprendiendo</span></li>
+        <li class="aprendiendo"><strong>GitHub</strong><span>Aprendiendo</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS ============ -->
+  <section class="bloque" id="proyectos">
+    <div class="contenedor">
+      <h2>Proyectos</h2>
+
+      <article class="proyecto">
+        <div class="captura">
+          <span>Captura del proyecto 1</span>
+          <img src="mascotas.jpeg" alt="Captura del sistema de gestión de mascotas y citas veterinarias" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <h3>Sistema web para la gestión de mascotas y citas veterinarias</h3>
+          <p>Facilita la gestión de mascotas y su información veterinaria: permite registrar propietarios, programar citas, guardar las atenciones realizadas y consultar el historial médico de cada mascota.</p>
+          <ul class="etiquetas"><li>HTML</li><li>CSS</li><li>Python</li></ul>
+          <span class="sin-enlace">Enlace no disponible</span>
+        </div>
+      </article>
+
+      <article class="proyecto">
+        <div class="captura">
+          <span>Captura del proyecto 2</span>
+          <img src="universidad.jpeg" alt="Captura de la plataforma de matrículas de una universidad" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <h3>Plataforma web de administración de matrículas universitarias</h3>
+          <p>Plataforma de gestión académica. Los estudiantes inician sesión de forma segura, gestionan sus materias, consultan sus notas y ven su horario con días y horas. El módulo administrativo permite crear y gestionar materias, administrar la información académica y generar reportes con gráficos de barras.</p>
+          <ul class="etiquetas"><li>HTML</li><li>Python</li><li>MySQL</li></ul>
+          <span class="sin-enlace">Enlace no disponible</span>
+        </div>
+      </article>
+
+      <article class="proyecto">
+        <div class="captura">
+          <span>Captura del proyecto 3</span>
+          <img src="parqueadero.jpeg" alt="Captura del sistema de administración de parqueadero" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <h3>Sistema de administración de parqueadero</h3>
+          <p>Sistema para gestionar y controlar un parqueadero. Registra la hora de entrada y salida de los vehículos y los datos del propietario, y calcula automáticamente el valor del servicio según el tipo de vehículo y el tiempo de permanencia.</p>
+          <ul class="etiquetas"><li>Python</li><li>MySQL</li></ul>
+          <span class="sin-enlace">Enlace no disponible</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="contenedor">
+    <span>© <span id="anio">2026</span> Miguel Alejandro Champutiz Rodriguez</span>
+    <!-- CAMBIA: tu usuario de GitHub -->
+    <a href="https://github.com/DJdanny18" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("anio").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
